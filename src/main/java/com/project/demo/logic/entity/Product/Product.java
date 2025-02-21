@@ -24,6 +24,10 @@ public class Product {
     @JoinColumn(name = "category_id") // Foreign key column in products table
     private Category category;
 
+    // Additional field for categoryId, to be used for the controller
+    @Transient // This tells JPA not to persist this field in the database
+    private Long categoryId;
+
     // Constructor with parameters
     public Product(Long id, String name, String description, double price, int stockQuantity, Category category) {
         this.id = id;
@@ -85,5 +89,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 }
