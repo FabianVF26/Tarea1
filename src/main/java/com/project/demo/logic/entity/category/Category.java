@@ -17,18 +17,18 @@ public class Category {
 
     private String description;
 
-    // One-to-many relationship with Product
+    // Relacion One-to-many con Producto
     @OneToMany(mappedBy = "category")
     private List<Product> products;
 
-    // Constructor with parameters
+    // Constructor
     public Category(Long id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    // Default constructor
+
     public Category() {
     }
 

@@ -19,13 +19,13 @@ public class Product {
 
     private int stockQuantity;
 
-    // Many-to-one relationship with Category
+    // Relacion Many-to-one con Categoria
     @ManyToOne
     @JoinColumn(name = "category_id") // Foreign key column in products table
     private Category category;
 
-    // Additional field for categoryId, to be used for the controller
-    @Transient // This tells JPA not to persist this field in the database
+
+    @Transient
     private Long categoryId;
 
     // Constructor with parameters
@@ -38,7 +38,7 @@ public class Product {
         this.category = category;
     }
 
-    // Default constructor
+
     public Product() {
     }
 

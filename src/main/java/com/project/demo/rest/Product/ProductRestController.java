@@ -79,7 +79,7 @@ public class ProductRestController {
                     request);
         }
 
-        // Buscar la categoría usando el ID proporcionado
+
         Optional<Category> category = categoryRepository.findById(product.getCategoryId());
         if (category.isPresent()) {
             product.setCategory(category.get()); // Establecer la categoría en el producto
@@ -108,7 +108,7 @@ public class ProductRestController {
                     request);
         }
 
-        // Buscar la categoría usando el ID proporcionado
+
         Optional<Category> category = categoryRepository.findById(product.getCategoryId());
         if (category.isPresent()) {
             product.setCategory(category.get()); // Establecer la categoría en el producto
