@@ -61,7 +61,7 @@ public class CategoryRestController {
     }
 
     @PostMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated() && hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     public ResponseEntity<?> addCategory(@RequestBody Category category, HttpServletRequest request) {
         Category savedCategory = categoryRepository.save(category);
         return new GlobalResponseHandler().handleResponse(
@@ -72,7 +72,7 @@ public class CategoryRestController {
     }
 
     @PutMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated() && hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     public ResponseEntity<?> updateCategory(@RequestBody Category category, HttpServletRequest request) {
         Category savedCategory = categoryRepository.save(category);
         return new GlobalResponseHandler().handleResponse(

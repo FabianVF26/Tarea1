@@ -69,7 +69,7 @@ public class ProductRestController {
     }
 
     @PostMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated() && hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     public ResponseEntity<?> addProduct(@RequestBody Product product, HttpServletRequest request) {
         // Verificar que el categoryId está presente y es válido
         if (product.getCategoryId() == null) {
@@ -98,9 +98,8 @@ public class ProductRestController {
     }
 
     @PutMapping
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated() && hasAnyRole('ADMIN', 'SUPER_ADMIN')")
     public ResponseEntity<?> updateProduct(@RequestBody Product product, HttpServletRequest request) {
-        // Verificar que el categoryId está presente y es válido
         if (product.getCategoryId() == null) {
             return new GlobalResponseHandler().handleResponse(
                     "Category ID is missing",
